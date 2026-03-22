@@ -18,6 +18,7 @@
             <ul class="nav-links">
                 <li><a href="#home" class="active">首页</a></li>
                 <li><a href="#destinations">目的地</a></li>
+                <li><a href="#china-spots">国内景点</a></li>
                 <li><a href="#packages">旅行套餐</a></li>
                 <li><a href="#services">服务</a></li>
                 <li><a href="#about">关于我们</a></li>
@@ -81,22 +82,22 @@
     <section class="search-section">
         <div class="search-container">
             <h2>寻找你的完美旅行</h2>
-            <form class="search-form">
+            <form class="search-form" id="mainSearchForm">
                 <div class="form-group">
                     <label><i class="fas fa-map-marker-alt"></i> 目的地</label>
-                    <input type="text" placeholder="你想去哪里？">
+                    <input type="text" id="searchDestination" placeholder="你想去哪里？" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-calendar-alt"></i> 出发日期</label>
-                    <input type="date">
+                    <input type="date" id="searchDepartDate">
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-calendar-alt"></i> 返回日期</label>
-                    <input type="date">
+                    <input type="date" id="searchReturnDate">
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-users"></i> 人数</label>
-                    <select>
+                    <select id="searchPeople">
                         <option>1人</option>
                         <option>2人</option>
                         <option>3-5人</option>
@@ -104,11 +105,35 @@
                     </select>
                 </div>
                 <button type="submit" class="btn-search">
-                    <i class="fas fa-search"></i> 搜索
+                    <i class="fas fa-search"></i> 搜索攻略
                 </button>
             </form>
+            <!-- 热门搜索标签 -->
+            <div class="hot-tags">
+                <span class="hot-tag-label"><i class="fas fa-fire"></i> 热门：</span>
+                <button class="hot-tag" data-dest="桂林">桂林</button>
+                <button class="hot-tag" data-dest="大理">大理</button>
+                <button class="hot-tag" data-dest="丽江">丽江</button>
+                <button class="hot-tag" data-dest="玉龙雪山">玉龙雪山</button>
+                <button class="hot-tag" data-dest="梵净山">梵净山</button>
+                <button class="hot-tag" data-dest="厦门">厦门</button>
+                <button class="hot-tag" data-dest="海南岛">海南岛</button>
+                <button class="hot-tag" data-dest="婺源">婺源</button>
+                <button class="hot-tag" data-dest="天门山">天门山</button>
+                <button class="hot-tag" data-dest="九寨沟">九寨沟</button>
+                <button class="hot-tag" data-dest="洪崖洞">洪崖洞</button>
+                <button class="hot-tag" data-dest="老君山">老君山</button>
+            </div>
         </div>
     </section>
+
+    <!-- 旅游攻略弹窗 -->
+    <div id="guideModal" class="guide-modal">
+        <div class="guide-modal-content">
+            <button class="guide-modal-close" id="guideModalClose"><i class="fas fa-times"></i></button>
+            <div id="guideModalBody"></div>
+        </div>
+    </div>
 
     <!-- 热门目的地 -->
     <section id="destinations" class="destinations-section">
@@ -211,6 +236,247 @@
             </div>
             <div class="view-more">
                 <button class="btn-secondary">查看更多目的地 <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 国内热门景点视频 -->
+    <section id="china-spots" class="china-spots-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🇨🇳 国内热门景点</h2>
+                <p>爆款视频带你提前感受最美中国，点击景点可获取详细攻略</p>
+            </div>
+            <div class="spots-grid">
+
+                <!-- 桂林 -->
+                <div class="spot-card" data-dest="桂林">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1GJ411x7h7&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-mountain"></i> 广西·桂林</h3>
+                        <p>山水甲天下，漓江烟雨如诗如画</p>
+                        <div class="spot-tags">
+                            <span>山水风光</span><span>漓江漂流</span><span>象鼻山</span>
+                        </div>
+                        <button class="btn-guide" data-dest="桂林"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 大理 -->
+                <div class="spot-card" data-dest="大理">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1Ux411n7sG&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-water"></i> 云南·大理</h3>
+                        <p>洱海苍山，慢时光里的诗意生活</p>
+                        <div class="spot-tags">
+                            <span>洱海</span><span>古城</span><span>苍山</span>
+                        </div>
+                        <button class="btn-guide" data-dest="大理"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 丽江 -->
+                <div class="spot-card" data-dest="丽江">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1hb4y1t7Rg&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-home"></i> 云南·丽江</h3>
+                        <p>古城烟火，纳西文化的千年传承</p>
+                        <div class="spot-tags">
+                            <span>古城</span><span>束河</span><span>纳西文化</span>
+                        </div>
+                        <button class="btn-guide" data-dest="丽江"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 玉龙雪山 -->
+                <div class="spot-card" data-dest="玉龙雪山">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1hW411W7zu&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-snowflake"></i> 云南·玉龙雪山</h3>
+                        <p>海拔5596米，云南最高峰的壮美雪景</p>
+                        <div class="spot-tags">
+                            <span>雪山</span><span>蓝月谷</span><span>冰川公园</span>
+                        </div>
+                        <button class="btn-guide" data-dest="玉龙雪山"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 梵净山 -->
+                <div class="spot-card" data-dest="梵净山">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1dT4y1C7wE&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-pagoda"></i> 贵州·梵净山</h3>
+                        <p>世界自然遗产，云雾缭绕的佛教圣地</p>
+                        <div class="spot-tags">
+                            <span>世界遗产</span><span>蘑菇石</span><span>红云金顶</span>
+                        </div>
+                        <button class="btn-guide" data-dest="梵净山"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 厦门 -->
+                <div class="spot-card" data-dest="厦门">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1sW411W7zT&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-umbrella-beach"></i> 福建·厦门</h3>
+                        <p>鼓浪屿琴声，文艺小清新的滨海之城</p>
+                        <div class="spot-tags">
+                            <span>鼓浪屿</span><span>曾厝垵</span><span>南普陀</span>
+                        </div>
+                        <button class="btn-guide" data-dest="厦门"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 海南岛 -->
+                <div class="spot-card" data-dest="海南岛">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1Nb4y1M7fB&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-sun"></i> 海南·三亚</h3>
+                        <p>东方夏威夷，中国人的热带天堂</p>
+                        <div class="spot-tags">
+                            <span>亚龙湾</span><span>天涯海角</span><span>免税购物</span>
+                        </div>
+                        <button class="btn-guide" data-dest="海南岛"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 婺源 -->
+                <div class="spot-card" data-dest="婺源">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1Yx411q7eg&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-leaf"></i> 江西·婺源</h3>
+                        <p>中国最美乡村，春季油菜花海醉人心</p>
+                        <div class="spot-tags">
+                            <span>油菜花</span><span>徽派建筑</span><span>江岭</span>
+                        </div>
+                        <button class="btn-guide" data-dest="婺源"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 天门山 -->
+                <div class="spot-card" data-dest="天门山">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1y4411G7mo&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-archway"></i> 湖南·天门山</h3>
+                        <p>鬼谷子故里，天门洞奇观震撼世界</p>
+                        <div class="spot-tags">
+                            <span>天门洞</span><span>玻璃栈道</span><span>索道</span>
+                        </div>
+                        <button class="btn-guide" data-dest="天门山"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 九寨沟 -->
+                <div class="spot-card" data-dest="九寨沟">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1et411F78G&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-fish"></i> 四川·九寨沟</h3>
+                        <p>童话世界的彩色湖泊，人间仙境</p>
+                        <div class="spot-tags">
+                            <span>五彩池</span><span>珍珠滩</span><span>诺日朗瀑布</span>
+                        </div>
+                        <button class="btn-guide" data-dest="九寨沟"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 洪崖洞 -->
+                <div class="spot-card" data-dest="洪崖洞">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1mb4y1r7aJ&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-city"></i> 重庆·洪崖洞</h3>
+                        <p>现实版千与千寻，山城夜景璀璨迷人</p>
+                        <div class="spot-tags">
+                            <span>夜景</span><span>吊脚楼</span><span>火锅</span>
+                        </div>
+                        <button class="btn-guide" data-dest="洪崖洞"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
+                <!-- 老君山 -->
+                <div class="spot-card" data-dest="老君山">
+                    <div class="spot-video-wrap">
+                        <iframe src="https://player.bilibili.com/player.html?bvid=BV1oW411W7zU&autoplay=0&muted=1"
+                            scrolling="no" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                        <div class="spot-play-mask">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="spot-info">
+                        <h3><i class="fas fa-fire-alt"></i> 河南·老君山</h3>
+                        <p>道教圣地，云海金顶壮美如画</p>
+                        <div class="spot-tags">
+                            <span>道教文化</span><span>云海</span><span>金顶</span>
+                        </div>
+                        <button class="btn-guide" data-dest="老君山"><i class="fas fa-map-marked-alt"></i> 查看攻略</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
