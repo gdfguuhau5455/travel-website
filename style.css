@@ -1191,12 +1191,488 @@ body {
     transform: translateY(-5px);
 }
 
+/* ==================== 热门搜索标签 ==================== */
+.hot-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #e0e0e0;
+}
+
+.hot-tag-label {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hot-tag {
+    padding: 6px 16px;
+    border: 1.5px solid var(--primary-color);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 13px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hot-tag:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* ==================== 国内景点视频区 ==================== */
+.china-spots-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #fff9f0 0%, #fff0f5 100%);
+}
+
+.spots-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+.spot-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.spot-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.spot-video-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    background: #000;
+    overflow: hidden;
+}
+
+.spot-video-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+    pointer-events: none;
+}
+
+.spot-card:hover .spot-video-wrap iframe {
+    pointer-events: auto;
+}
+
+.spot-play-mask {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.25);
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.spot-play-mask i {
+    font-size: 52px;
+    color: rgba(255,255,255,0.85);
+    transition: var(--transition);
+}
+
+.spot-card:hover .spot-play-mask {
+    background: rgba(0,0,0,0.05);
+}
+
+.spot-card:hover .spot-play-mask i {
+    opacity: 0;
+}
+
+.spot-info {
+    padding: 18px 20px 20px;
+}
+
+.spot-info h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.spot-info h3 i {
+    color: var(--primary-color);
+}
+
+.spot-info > p {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.spot-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.spot-tags span {
+    padding: 3px 10px;
+    background: var(--light-color);
+    border-radius: 10px;
+    font-size: 11px;
+    color: var(--text-light);
+}
+
+.btn-guide {
+    width: 100%;
+    padding: 9px 0;
+    background: linear-gradient(135deg, var(--primary-color), #ff8e8e);
+    color: var(--white);
+    border: none;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-guide:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(255,107,107,0.35);
+}
+
+/* ==================== 旅游攻略弹窗 ==================== */
+.guide-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.guide-modal.show {
+    display: flex;
+}
+
+.guide-modal-content {
+    background: var(--white);
+    border-radius: 20px;
+    max-width: 860px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+    animation: modalIn 0.35s ease;
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(40px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.guide-modal-close {
+    position: sticky;
+    top: 16px;
+    float: right;
+    margin: 16px 16px 0 0;
+    width: 36px; height: 36px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.guide-modal-close:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* 攻略内容区 */
+.guide-hero {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+    display: block;
+}
+
+.guide-body {
+    padding: 28px 36px 36px;
+}
+
+.guide-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 6px;
+}
+
+.guide-subtitle {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+}
+
+.guide-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding: 16px 20px;
+    background: var(--light-color);
+    border-radius: 12px;
+}
+
+.guide-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.guide-meta-item i {
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.guide-section {
+    margin-bottom: 26px;
+}
+
+.guide-section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 4px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.guide-section-title i {
+    color: var(--primary-color);
+}
+
+/* 行程天数 */
+.guide-days {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.guide-day {
+    background: var(--light-color);
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+
+.guide-day-header {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.guide-day ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.guide-day ul li {
+    font-size: 14px;
+    color: var(--text-color);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.6;
+}
+
+.guide-day ul li::before {
+    content: '▶';
+    color: var(--secondary-color);
+    font-size: 10px;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+/* 景点列表 */
+.guide-spots-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.guide-spot-item {
+    background: var(--light-color);
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+
+.guide-spot-item h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 4px;
+}
+
+.guide-spot-item p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* 美食推荐 */
+.guide-food-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.guide-food-item {
+    text-align: center;
+    padding: 14px 10px;
+    background: var(--light-color);
+    border-radius: 12px;
+}
+
+.guide-food-item .food-icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.guide-food-item h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 4px;
+}
+
+.guide-food-item p {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+/* 小贴士 */
+.guide-tips {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.guide-tip {
+    display: flex;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #fff8f0;
+    border-left: 3px solid var(--accent-color);
+    border-radius: 0 10px 10px 0;
+    font-size: 14px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.guide-tip i {
+    color: var(--accent-color);
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* 费用预算 */
+.guide-budget {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.guide-budget-item {
+    background: var(--light-color);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+}
+
+.guide-budget-item .budget-type {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 4px;
+}
+
+.guide-budget-item .budget-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.guide-budget-item .budget-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 2px;
+}
+
+.guide-cta {
+    margin-top: 28px;
+    text-align: center;
+}
+
+.guide-cta .btn-primary {
+    font-size: 17px;
+    padding: 15px 50px;
+}
+
 /* ==================== 响应式设计 ==================== */
 @media (max-width: 1024px) {
     .destinations-grid,
     .packages-grid,
     .services-grid,
     .testimonials-slider {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .spots-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .guide-spots-list,
+    .guide-food-list,
+    .guide-budget {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -1235,6 +1711,24 @@ body {
 
     .slide-content p {
         font-size: 18px;
+    }
+
+    .spots-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-spots-list,
+    .guide-food-list,
+    .guide-budget {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-body {
+        padding: 20px 18px 28px;
+    }
+
+    .guide-title {
+        font-size: 22px;
     }
 
     .search-form {
